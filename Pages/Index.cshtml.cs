@@ -12,9 +12,12 @@ namespace ScriptureJournal.Pages
             _logger = logger;
         }
 
-        public void OnGet()
+        public IActionResult OnGet()
         {
+            string url = "/Journal"
+            + Request.Query["redirect_url"];
 
+            return Redirect(url);
         }
     }
 }

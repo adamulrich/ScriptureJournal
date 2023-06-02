@@ -13,13 +13,16 @@ namespace ScriptureJournal.Models
 
         [StringLength(2000, MinimumLength = 1)]
         [Required]
+        [Display(Name = "Notes", Prompt ="Journal Entry here...")]
         public string Text { get; set; }
 
         [Required]
+        [Display(Name = "Book")]
         public int BookId {get; set; }
 
         public Book? Book { get; set; }
 
+        [Display(Name="Chapter(s)/Verse(s)", Prompt ="ex: 12:3-4")]
         public string? Chapter { get; set; }
 
         [Required]
