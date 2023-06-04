@@ -13,6 +13,10 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "C:\\Users\\adamu\\repo\\ScriptureJournal\\wwwroot\\images\\scriptures.jpg",
+      "PackagePath": "staticwebassets\\images\\scriptures.jpg"
+    },
+    {
       "Id": "C:\\Users\\adamu\\repo\\ScriptureJournal\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },

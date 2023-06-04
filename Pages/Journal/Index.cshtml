@@ -6,71 +6,40 @@
 }
 
 <h1>Scripture Journal</h1>
-
+<img class="img-fluid" src="images\scriptures.jpg" alt="scriptures" >
 <p>
-    <a asp-page="Create">Create New</a>
+    <a class='btn btn-success mt-4' asp-page="Create">Create New</a>
 </p>
-<form>
-    <p class="mt-4">
-        <label class="fw-bold">Book Name: 
-            <select asp-for="BookName" asp-items="Model.BooksList">
-                <option value="">All</option>
-            </select>
-        </label>
+<form class="row-cols-lg-auto align-items-center">
 
-        <label class="fw-bold ms-2">Search Text
-            <input type="text" asp-for="SearchString" />
-        </label>
+        <label for="bookSelect" id='bookLabel' class="form-label fw-bold mt-2 mb-2">Book Name:</label>
+        <select id='bookSelect' class="form-select minmax" asp-for="BookName" asp-items="Model.BooksList" aria-labelledby="bookLabel">
+            <option value="">All</option>
+        </select>
     
-        <label class="ms-2 fw-bold">Sort:
-            <select class="ms-2" asp-for="SortType" asp-items="Model.SortTypeList">
-            </select>
-        </label>
+        <label for='searchString' id="searchLabel" class="fw-bold form-label ms-2 mt-2">Search Text</label>
+        <input id='searchString' class="minmax form-control" type="text" asp-for="SearchString" placeholder="Type your search here" aria-labelledby='searchLabel'>
 
-        <input type="submit" class="btn btn-primary ms-4" value="Filter/Sort" />
+        <label for="sortSelect" id='sortLabel' class="ms-2 mt-2 fw-bold">Sort:</label>
+        <select id="sortSelect" class="form-select ms-2 minmax" asp-for="SortType" asp-items="Model.SortTypeList" aria-labelledby="sortLabel">
+        </select>
 
-    </p>
+        <input type="submit" class="btn btn-primary mt-2 mb-2" value="Filter/Sort" />
 </form>
 
-<table class="table mt-4">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.JournalEntry[0].Book)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.JournalEntry[0].Chapter)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.JournalEntry[0].DateCreated)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.JournalEntry[0].Text)
-            </th>
-            <th>Options</th>
-        </tr>
-    </thead>
-    <tbody>
+<div class="card-group">
 @foreach (var item in Model.JournalEntry) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Book.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Chapter)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DateCreated)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem =>  item.Text)
-            </td>
-            <td>
-                    <p><a asp-page="./Edit" asp-route-id="@item.Id">Edit</a></p> 
-                <p><a asp-page="./Details" asp-route-id="@item.Id">Details</a> </p>
-                <p><a asp-page="./Delete" asp-route-id="@item.Id">Delete</a></p>
-            </td>
-        </tr>
+    <div class="card text-white bg-secondary mb-3 minmax" >
+        <div class="card-header">@Html.DisplayFor(modelItem => item.Book.Name) @Html.DisplayFor(modelItem => item.Chapter)</div>
+        <div class="card-body">
+            <p class="card-title">@Html.DisplayFor(modelItem => item.DateforDisplay)</p>
+            <p class="card-text">@Html.DisplayFor(modelItem =>  item.Text)</p>
+        </div>
+        <div class='card-footer bg-transparent border-success'>
+            <a class="btn btn-warning" asp-page="./Edit" asp-route-id="@item.Id">Edit</a>
+            <a class='btn btn-primary' asp-page="./Details" asp-route-id="@item.Id">Details</a>
+            <a class='btn btn-danger' asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+        </div>
+    </div>
 }
-    </tbody>
-</table>
+</div>

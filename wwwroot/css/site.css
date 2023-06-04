@@ -16,3 +16,8 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+.minmax {
+  min-width: 16rem; 
+  max-width: 22rem;
+}

@@ -28,5 +28,11 @@ namespace ScriptureJournal.Models
         [Required]
         public DateTime DateCreated { get; set; }
 
+        public string DateforDisplay {
+            get {
+                return this.DateCreated.ToString("dd MMM yy HH:mm");
+            }
+        }
+
     }
 }
