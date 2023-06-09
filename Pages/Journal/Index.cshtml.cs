@@ -53,7 +53,7 @@ namespace ScriptureJournal.Pages.Journal
                                                 orderby b.Id
                                                 select b.Name ;
 
-        
+            BooksList = new SelectList(await bookQuery.ToListAsync());
 
             var journalEntries = from je in _context.JournalEntry
                 select je;
@@ -77,7 +77,7 @@ namespace ScriptureJournal.Pages.Journal
             {
                 journalEntries = journalEntries.OrderBy(je => je.DateCreated);
             }
-            BooksList = new SelectList(await bookQuery.ToListAsync());
+            
             
             if (_context.JournalEntry != null)
             {
